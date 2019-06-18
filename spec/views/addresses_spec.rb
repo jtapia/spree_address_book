@@ -5,9 +5,9 @@ describe 'spree/addresses/new', type: :view do
 
   it 'renders new.html.erb for new address' do
     assign(:address, address)
-    render :template => 'spree/addresses/new', :address => address
+    render template: 'spree/addresses/new', address: address
 
-    expect(rendered).to have_content(I18n.t('address_book.new_shipping_address'))
+    expect(rendered).to have_content(I18n.t('spree.new_shipping_address'))
 
     expect(rendered).to have_field('First Name', type: 'text')
     expect(rendered).to have_field('Last Name', type: 'text')
@@ -25,11 +25,11 @@ describe 'spree/addresses/new', type: :view do
 end
 
 describe 'spree/addresses/edit', type: :view do
-  let(:address) { create(:address) }
+  let(:address) { create(:address, firstname: 'User', lastname: 'Test') }
 
   it 'renders edit.html.erb for editing an existing address' do
     assign(:address, address)
-    render :template => 'spree/addresses/edit', :address => address
+    render template: 'spree/addresses/edit', address: address
 
     expect(rendered).to have_field('First Name', with: address.firstname, type: 'text')
     expect(rendered).to have_field('Last Name', with: address.lastname, type: 'text')
@@ -68,7 +68,7 @@ end
 def available_countries
   countries = Spree::Zone.find_by_name(Spree::Config[:checkout_zone]).try(:country_list) || Spree::Country.all
   countries.collect do |c|
-    c.name = t(c.name, :scope => 'countries', default: c.name)
+    c.name = t(c.name, scope: 'countries', default: c.name)
     c
   end.sort{ |a,b| a.name <=> b.name }
 end
