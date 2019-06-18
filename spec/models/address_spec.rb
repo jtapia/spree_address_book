@@ -1,15 +1,17 @@
 require 'spec_helper'
 
 describe Spree::Address do
-  let(:address) { create(:address) }
+  let(:address) { build(:address) }
   let(:address2) { create(:address) }
   let(:order) { create(:completed_order_with_totals) }
   let(:user) { create(:user) }
+  let(:attributes) { [:firstname, :address1, :city, :country_id, :zipcode, :phone] }
+  let(:address_string) { "#{address.full_name}<br/>#{address.company}<br/>#{address.address1}<br/>#{address.address2}<br/>#{address.city}, #{address.state ? address.state.abbr : address.state_name} #{address.zipcode}<br/>#{address.country}" }
 
   before { order.update_attribute(:bill_address, address2) }
 
   it 'has required attributes' do
-    expect(Spree::Address.required_fields).to eq([:firstname, :lastname, :address1, :city, :country, :zipcode, :phone])
+    expect(Spree::Address.required_fields).to eq(attributes)
   end
 
   it 'is editable' do
@@ -29,8 +31,7 @@ describe Spree::Address do
   end
 
   it 'is displayed as string' do
-    a = address
-    expect(address.to_s).to eq "#{a.firstname} #{a.lastname}<br/>#{a.company}<br/>#{a.address1}<br/>#{a.address2}<br/>#{a.city}, #{a.state ? a.state.abbr : a.state_name} #{a.zipcode}<br/>#{a.country}".html_safe
+    expect(address.to_s).to eq address_string.html_safe
   end
 
   it 'is destroyed without saving used' do
