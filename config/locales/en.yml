@@ -2,7 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  address_book:
+  spree:
     other_address: "Other address"
     add_new_shipping_address: "Add new address"
     new_shipping_address: "New Address"
