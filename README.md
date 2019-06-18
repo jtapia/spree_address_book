@@ -1,40 +1,36 @@
-# Spree Address Book
+# SolidusAddressBook
 
-[![Build Status](https://travis-ci.org/spree-contrib/spree_address_book.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_address_book) [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_address_book/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_address_book)
+[![Build Status](https://travis-ci.org/jtapia/solidus_address_book.svg?branch=master)](https://travis-ci.org/jtapia/solidus_address_book)
 
 This extension allows registered users to have multiple shipping & billing addresses and select each of them on checkout.
 
 ## Installation
 
-1. Add this extension to your Gemfile with this line:
-  ```ruby
-  gem 'spree_address_book', github: 'spree-contrib/spree_address_book', branch: 'X-X-stable'
-  ```
+Add this line to your application's Gemfile:
 
-  The `branch` option is important: it must match the version of Spree you're using.
-  For example, use `3-0-stable` if you're using Spree `3-0-stable` or any `3.0.x` version.
+```ruby
+gem 'solidus_address_book', github: 'jtapia/solidus_address_book'
+```
 
-2. Install the gem using Bundler:
-  ```ruby
-  bundle install
-  ```
+Then run the following:
 
-3. Copy & run migrations
-  ```ruby
-  bundle exec rails g spree_address_book:install
-  ```
+```console
+$ bundle install
+$ bundle exec rails g solidus_address_book:install
+```
 
-4. Restart your server
+## Testing
 
-  If your server was running, restart it so that it can find the assets properly.
+Run the following to automatically build a dummy app and run the tests:
 
+```console
+$ bundle exec rake
+```
 
 ## Contributing
 
-If you'd like to contribute, please take a look at the
-[instructions](CONTRIBUTING.md) for installing dependencies and crafting a good
-pull request.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jtapia/solidus_address_book.
 
 ## License
 
-Copyright (c) 2011-2016 Roman Smirnov & [contributors](https://github.com/spree-contrib/spree_address_book/graphs/contributors), released under the New BSD License
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

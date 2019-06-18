@@ -2,11 +2,12 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'solidus_address_book/version'
 
 Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.name = 'solidus_address_book'
-  s.version = '3.2.0.alpha'
+  s.version = SolidusAddressBook::VERSION
   s.summary = 'Adds address book for users to Spree'
   s.description = s.summary
 
@@ -40,4 +41,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'puma'
 end
